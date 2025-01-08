@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { useToast } from "@/hooks/use-toast";
-import { Activity, Brain, Clock, Heart } from "lucide-react";
+import { Activity, Brain, Calendar, Clock, Heart, Play } from "lucide-react";
 
 export default function Index() {
   const { toast } = useToast();
@@ -28,16 +35,17 @@ export default function Index() {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90"
-              onClick={handleDemoRequest}
+              onClick={() => window.location.href = "#demo"}
             >
-              Request a Demo
+              <Play className="mr-2 h-4 w-4" /> See It in Action
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-primary text-primary hover:bg-primary/10"
+              onClick={handleDemoRequest}
             >
-              See It in Action
+              <Calendar className="mr-2 h-4 w-4" /> Request a Demo
             </Button>
           </div>
         </div>
@@ -111,24 +119,32 @@ export default function Index() {
           <h2 className="text-4xl font-bold text-center mb-12">
             Trusted by Providers Across the US
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="testimonial-card">
-              <p className="quote">
-                "Symmetric makes every session more productive. My patients feel more engaged, and I can see their progress in real time."
-              </p>
-              <p className="author">
-                — Dr. Michael JeanFavre, Stanford Medical Center
-              </p>
-            </div>
-            <div className="testimonial-card">
-              <p className="quote">
-                "It's like having a window into my patient's muscles. Incredibly valuable."
-              </p>
-              <p className="author">
-                — Dr. Jordan Smith, Robert Wood Johnson Health System
-              </p>
-            </div>
-          </div>
+          <Carousel className="max-w-4xl mx-auto">
+            <CarouselContent>
+              <CarouselItem>
+                <div className="testimonial-card">
+                  <p className="quote">
+                    "Symmetric makes every session more productive. My patients feel more engaged, and I can see their progress in real time."
+                  </p>
+                  <p className="author">
+                    — Dr. Michael JeanFavre, Stanford Medical Center
+                  </p>
+                </div>
+              </CarouselItem>
+              <CarouselItem>
+                <div className="testimonial-card">
+                  <p className="quote">
+                    "It's like having a window into my patient's muscles. Incredibly valuable."
+                  </p>
+                  <p className="author">
+                    — Dr. Jordan Smith, Robert Wood Johnson Health System
+                  </p>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
